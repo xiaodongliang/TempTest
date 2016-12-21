@@ -3,6 +3,9 @@
 <head>
 
     <title>ADN Viewer Demo</title>
+    
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no" />
+    <meta charset="utf-8">
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
@@ -11,24 +14,34 @@
  
     <!-- Viewer production -->
     <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=2.11.*" type="text/css">
-    <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/A360.css?v=2.11.*" type="text/css">
 
     <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js?v=2.11.*"></script>
     <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.js?v=2.11.*"></script>
-    <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/Autodesk360App.js?v=2.11.*"></script>
 
     <script src="index.js"></script> 
 
+    <style>
+        #MyNextButton {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
 </head>
+<body>
 
-<div class="page-header ">
-    Token<input type="input" id="inputToken" value="ypDO1JG7dJQHR5MDRx8d83BMQ7bU"></input>
 
-    Urn <input type="input" id="inputUrn" value="urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6eGlhb2Rvbmd0ZXN0YnVja2V0L3JhY19hZHZhbmNlZC5ydnQ="></input>
- 
-</div> 
+    <div class="page-header ">
+        Token<input type="input" id="inputToken" value="Ji1sZEbcn7xSIhNbSAqvoUipRgKJ"></input>
 
-<div id="viewerDiv"></div>
+        Urn <input type="input" id="inputUrn" value="urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bG12LXN0Zy1tb2RlbHMvaHlwZXJsaW5rMS5ydnQ"></input>    
+
+        <!-- Opens the next model (or the same one if no other is available) -->
+        <button id="MyNextButton" onClick="loadNextModel()">Next!</button>    
+    </div> 
+
+
+    <div id="viewerDiv"></div>
 
 
 </body>

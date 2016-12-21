@@ -1,11 +1,12 @@
  
 var _viewer; 
 var viewerApp; 
+var viewables;
+var indexViewable;
 
 function loadView(urn)
 {
 	var token = $('#inputToken').val(); 
-	
  
     var options = {
         env: 'AutodeskProduction',
@@ -29,17 +30,25 @@ function loadView(urn)
  function onDocumentLoadSuccess(doc) {
 
       var viewer = viewerApp.getCurrentViewer();
-      var viewables = viewerApp.bubble.search({
+      viewables = viewerApp.bubble.search({
         'type': 'geometry'
       });
       if (viewables.length === 0) {
         console.error('Document contains no viewables.');
         return;
       }
+      
       // Choose any of the avialble viewables
-      viewerApp.selectItem(viewables[2].data);
-      viewer = viewerApp.getViewer();
+      indexViewable = 1; // gets incremented in loadNextModel()
+      loadNextModel();
  }
+
+ function loadNextModel() {
+    // Next viewable index. Loop back to 0 when overflown.
+    indexViewable = (indexViewable + 1) % viewables.length;
+    viewerApp.selectItem(viewables[indexViewable].data);
+    viewer = viewerApp.getViewer();
+}
 
 function onItemSelected(evt){
 	 
