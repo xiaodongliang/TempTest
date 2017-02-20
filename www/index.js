@@ -37,8 +37,13 @@ function loadView(urn)
         return;
       }
       // Choose any of the avialble viewables
-      viewerApp.selectItem(viewables[2].data);
+      viewerApp.selectItem(viewables[0].data);
       viewer = viewerApp.getViewer();
+
+      viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, 
+          function(){
+            viewer.loadExtension('Autodesk.ADN.Viewing.Extension.AxisHelper');
+        });
  }
 
 function onItemSelected(evt){
